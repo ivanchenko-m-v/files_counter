@@ -14,6 +14,7 @@ namespace files_counter
                 Console.WriteLine( "usage: file_counter.exe <FILE_MASK> [PATH]" );
                 Console.WriteLine( "\t<FILE_MASK>\t - required param: file type template (as example '*.pdf')" );
                 Console.WriteLine( "\t[PATH]\t - optional param: path for search files" );
+                return;
             }
             string s_filter = args[0];
             string s_path = args.Length > 1 ? args[1] : "";
@@ -49,7 +50,7 @@ namespace files_counter
             using( StreamWriter bw = File.CreateText( s_dir_current + "\\output.csv" ) )
             {
                 //write header
-                bw.WriteLine( "{0};{1};{2}", "Path:", "Files Count:", "Files Size" );
+                bw.WriteLine( "{0};{1};{2}", "Path:", "Files Count:", "Files Size:" );
                 //count files and write files info
                 Program.write_dirinfo_to_csv( new DirectoryInfo( start_path ), bw, s_filter );
             }
